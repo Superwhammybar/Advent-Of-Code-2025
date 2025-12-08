@@ -8,3 +8,6 @@ rust_decimal = "1.39.0"
 
 [[bin]]
 name = "day1"
+
+[[bin]]
+name = "day2"
