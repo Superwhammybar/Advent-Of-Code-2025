@@ -90,6 +90,9 @@ impl Bank {
 
 impl Bank {
     fn process(&mut self) {
+        // We must find X digits in Y length.
+        // We search ahead only as far as where the resultant choice would make X remaining digits = Y remaining length.
+        // Repeat until we've chosen the best option each time, or we hit the limit described above where all remaining digits must be used.
         while self.digits_to_consider != self.target_length && self.target_length > 0 {
             let search_size = self.digits_to_consider - self.target_length;
             let to_search = self
@@ -106,7 +109,7 @@ impl Bank {
             }
             self.current_digits.push(Joltage(largest_value));
             self.target_length -= 1;
-            self.latest_digit_index = self.latest_digit_index + 1 + largest_index;
+            self.latest_digit_index = self.latest_digit_index + 1 + largest_index; // Start searching from the index after the one we just used
             self.digits_to_consider = self.joltages.len() - self.latest_digit_index;
         }
         if self.digits_to_consider == self.target_length {
