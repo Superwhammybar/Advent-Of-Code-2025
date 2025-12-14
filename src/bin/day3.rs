@@ -96,15 +96,6 @@ impl Bank {
                 .joltages
                 .get(self.latest_digit_index..self.latest_digit_index + search_size + 1)
                 .unwrap();
-            // println!(
-            //     "Current Digits: {:?}, Target Length: {}, Latest Digit Index: {}, Digits To Consider: {}, Checking Digits: {:?}, Searching: {:?}",
-            //     self.current_digits,
-            //     self.target_length,
-            //     self.latest_digit_index,
-            //     self.digits_to_consider,
-            //     self.latest_digit_index..self.latest_digit_index + search_size,
-            //     to_search
-            // );
             let (mut largest_index, mut largest_value) = (0, 0);
             for s in 0..to_search.len() {
                 let compare_value = to_search.get(s).unwrap();
@@ -128,6 +119,5 @@ impl Bank {
             ]
             .concat();
         }
-        println!("{:?}", self.current_digits);
     }
 }
